@@ -16,7 +16,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,10 +27,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class MeetingPreparation {
 	
 
@@ -53,12 +54,15 @@ public class MeetingPreparation {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="meetingPreparation")
+	@JsonIgnoreProperties("meetingPreparation")
 	private List<CandidacyOrigin> CandidacyOrigin;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="meetingPreparation")
+	@JsonIgnoreProperties("meetingPreparation")
 	private List<BusinessLine> businessLine;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="meetingPreparation")
+	@JsonIgnoreProperties("meetingPreparation")
 	private List<ProfilSkills> profilskills;
 	
 	@OneToOne

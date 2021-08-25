@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,12 +33,9 @@ import lombok.NoArgsConstructor;
 
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-//@ConfigurationProperties
-//@PropertySource("classpath:application.properties")
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class CandidateDetails  {
 
 
@@ -65,13 +66,17 @@ public class CandidateDetails  {
 	private long salaire;
 	private String diplome;
 	
-	@OneToOne(mappedBy="candidateDetails")
+	@OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy="candidateDetails")
 	private MeetingPreparation meetingPreparation;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="candidateDetails")
+	@JsonIgnoreProperties("candidateDetails")
 	private List<Contrat> contrat;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="candidateDetails")
+	@JsonIgnoreProperties("candidateDetails")
 	private List<Experience> experience;
 	
 	@OneToOne
@@ -83,7 +88,6 @@ public class CandidateDetails  {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 
 

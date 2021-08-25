@@ -8,14 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class ProfilSkills {
 	
 	@Id
@@ -25,6 +27,7 @@ public class ProfilSkills {
 	private String libelle;
 	
 	@ManyToOne
+	@JsonIgnoreProperties("profilskills")
 	MeetingPreparation meetingPreparation;
 
 	public ProfilSkills() {

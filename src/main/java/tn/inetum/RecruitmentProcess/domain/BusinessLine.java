@@ -14,9 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class BusinessLine {
@@ -29,6 +27,7 @@ public class BusinessLine {
 	private String libelle;
 	
 	@ManyToOne
+	@JsonIgnoreProperties("businessLine")
 	MeetingPreparation meetingPreparation;
 
 	public BusinessLine() {

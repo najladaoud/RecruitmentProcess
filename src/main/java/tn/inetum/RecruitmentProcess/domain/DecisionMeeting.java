@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,15 +18,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class DecisionMeeting  {
 	
 
@@ -49,7 +53,8 @@ public class DecisionMeeting  {
 	private String DecisionEntretienTechnique;	
 	private long score;
 	
-	@OneToOne(mappedBy="decisionMeeting")
+	@OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,mappedBy="decisionMeeting")
 	private CandidateDetails candidateDetails;
 
 	public DecisionMeeting() {

@@ -9,13 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 public class Contrat  {
 
@@ -25,6 +25,7 @@ public class Contrat  {
 	private String type;
 	
 	@ManyToOne
+	@JsonIgnoreProperties("contrat")
 	CandidateDetails candidateDetails;
 
 	public Contrat() {
