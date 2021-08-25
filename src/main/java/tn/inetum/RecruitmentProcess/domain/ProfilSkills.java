@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class ProfilSkills {
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="PS_ID")
@@ -25,5 +26,38 @@ public class ProfilSkills {
 	
 	@ManyToOne
 	MeetingPreparation meetingPreparation;
+
+	public ProfilSkills() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ProfilSkills(String libelle, MeetingPreparation meetingPreparation) {
+		super();
+		this.libelle = libelle;
+		this.meetingPreparation = meetingPreparation;
+	}
+	
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public MeetingPreparation getMeetingPreparation() {
+		return meetingPreparation;
+	}
+
+	public void setMeetingPreparation(MeetingPreparation meetingPreparation) {
+		this.meetingPreparation = meetingPreparation;
+	}
+
+	
+	
+	
+	
+	
 
 }

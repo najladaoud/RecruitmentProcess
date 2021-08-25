@@ -17,14 +17,47 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Contrat implements Serializable {
+public class Contrat  {
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="CO_ID")
 	private long id;
 	private String type;
 	
 	@ManyToOne
 	CandidateDetails candidateDetails;
+
+	public Contrat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Contrat(String type, CandidateDetails candidateDetails) {
+		super();
+		this.type = type;
+		this.candidateDetails = candidateDetails;
+	}
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public CandidateDetails getCandidateDetails() {
+		return candidateDetails;
+	}
+
+	public void setCandidateDetails(CandidateDetails candidateDetails) {
+		this.candidateDetails = candidateDetails;
+	}
+
+	
+	
+	
+	
 
 }
