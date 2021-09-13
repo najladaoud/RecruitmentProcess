@@ -1,56 +1,44 @@
 package tn.inetum.RecruitmentProcess.domain;
 
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class MeetingPreparation {
-	
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	//@Column(name="recruiter")
 	private String nomRecruteur ;
-	//@Column(name="Date")
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private Date DateDeLentretien;
-	//@Column(name="updateDate")
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy/MM/dd")
+	private Date DateDeLentretien;	
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date DateDeMiseAjour;
-	
 	private String recommandepar;
 	private String cooptepar;
 	private String sourcepar;
-	
 	private String Autrecompetences;
+	private String NPCandidat;
+	private String Poste;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="meetingPreparation")
@@ -70,14 +58,14 @@ public class MeetingPreparation {
 
 	public MeetingPreparation() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	
 
-	
+
 	public MeetingPreparation(String nomRecruteur, Date dateDeLentretien, Date dateDeMiseAjour, String recommandepar,
-			String cooptepar, String sourcepar, String autrecompetences,
+			String cooptepar, String sourcepar, String autrecompetences, String nPCandidat, String poste,
 			List<tn.inetum.RecruitmentProcess.domain.CandidacyOrigin> candidacyOrigin, List<BusinessLine> businessLine,
 			List<ProfilSkills> profilskills, CandidateDetails candidateDetails) {
 		super();
@@ -88,12 +76,13 @@ public class MeetingPreparation {
 		this.cooptepar = cooptepar;
 		this.sourcepar = sourcepar;
 		Autrecompetences = autrecompetences;
+		NPCandidat = nPCandidat;
+		Poste = poste;
 		CandidacyOrigin = candidacyOrigin;
 		this.businessLine = businessLine;
 		this.profilskills = profilskills;
 		this.candidateDetails = candidateDetails;
 	}
-
 
 
 
@@ -185,6 +174,28 @@ public class MeetingPreparation {
 	public void setCandidateDetails(CandidateDetails candidateDetails) {
 		this.candidateDetails = candidateDetails;
 	}
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getNPCandidat() {
+		return NPCandidat;
+	}
+
+	public void setNPCandidat(String nPCandidat) {
+		NPCandidat = nPCandidat;
+	}
+	public String getPoste() {
+		return Poste;
+	}
+
+	public void setPoste(String poste) {
+		Poste = poste;
+	}
+	
 
 }

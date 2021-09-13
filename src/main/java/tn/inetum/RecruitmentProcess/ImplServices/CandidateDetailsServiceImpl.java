@@ -2,14 +2,12 @@ package tn.inetum.RecruitmentProcess.ImplServices;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 
-import lombok.AllArgsConstructor;
 
 import tn.inetum.RecruitmentProcess.domain.CandidateDetails;
 import tn.inetum.RecruitmentProcess.domain.MeetingPreparation;

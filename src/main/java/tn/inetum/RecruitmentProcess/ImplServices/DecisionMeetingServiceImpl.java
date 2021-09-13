@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.inetum.RecruitmentProcess.domain.CandidateDetails;
 import tn.inetum.RecruitmentProcess.domain.DecisionMeeting;
-import tn.inetum.RecruitmentProcess.domain.MeetingPreparation;
 import tn.inetum.RecruitmentProcess.repository.CandidateDetailsRepository;
 import tn.inetum.RecruitmentProcess.repository.IDecisionMeetingRepository;
 import tn.inetum.RecruitmentProcess.services.IDecisionMeetingService;

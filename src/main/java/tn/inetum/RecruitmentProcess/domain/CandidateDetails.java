@@ -1,11 +1,11 @@
 package tn.inetum.RecruitmentProcess.domain;
 
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,23 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
 
@@ -39,12 +28,15 @@ import lombok.NoArgsConstructor;
 public class CandidateDetails  {
 
 
+
+
+
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	//@Column(name="Candidat_Id")
 	private Long id;
-	private String nom;
-	private String prenom;
+	private String NPCandidat;
 	private String email;
 	private String telephone;
 	private String situationFamiliale;	
@@ -91,15 +83,15 @@ public class CandidateDetails  {
 
 
 
-	public CandidateDetails(String nom, String prenom, String email, String telephone, String situationFamiliale,
-			String ecole, Date annee, String poste, String employeurActuel, String posteActuel,
-			String causerechercheEtObjectifs, String motivationsEtAttentes, String niveauAnglais, String agileScrum,
-			String certification, String managementDeLequipe, String valeursAjoutees, String disponibilite,
-			String managementDeProjet, long salaire, String diplome, MeetingPreparation meetingPreparation,
-			List<Contrat> contrat, List<Experience> experience, DecisionMeeting decisionMeeting) {
+
+	public CandidateDetails(String nPCandidat, String email, String telephone, String situationFamiliale, String ecole,
+			Date annee, String poste, String employeurActuel, String posteActuel, String causerechercheEtObjectifs,
+			String motivationsEtAttentes, String niveauAnglais, String agileScrum, String certification,
+			String managementDeLequipe, String valeursAjoutees, String disponibilite, String managementDeProjet,
+			long salaire, String diplome, MeetingPreparation meetingPreparation, List<Contrat> contrat,
+			List<Experience> experience, DecisionMeeting decisionMeeting) {
 		super();
-		this.nom = nom;
-		this.prenom = prenom;
+		NPCandidat = nPCandidat;
 		this.email = email;
 		this.telephone = telephone;
 		this.situationFamiliale = situationFamiliale;
@@ -128,26 +120,14 @@ public class CandidateDetails  {
 
 
 
-
-
-
-
-
-	public String getNom() {
-		return nom;
+	public String getNPCandidat() {
+		return NPCandidat;
 	}
 
-
-
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setNPCandidat(String nPCandidat) {
+		NPCandidat = nPCandidat;
 	}
 
-
-
-	public String getPrenom() {
-		return prenom;
-	}
 
 
 	public String getSituationFamiliale() {
@@ -160,10 +140,7 @@ public class CandidateDetails  {
 		this.situationFamiliale = situationFamiliale;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
+	
 
 
 	public String getEmail() {

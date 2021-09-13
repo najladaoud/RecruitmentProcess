@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import tn.inetum.RecruitmentProcess.domain.Experience;
 import tn.inetum.RecruitmentProcess.repository.ExperienceRepository;
-import tn.inetum.RecruitmentProcess.services.ICandidateDetailsService;
 import tn.inetum.RecruitmentProcess.services.IExperienceService;
 
 @Service

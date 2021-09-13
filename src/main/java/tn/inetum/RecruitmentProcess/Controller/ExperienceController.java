@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.inetum.RecruitmentProcess.ImplServices.ContratServiceImpl;
 import tn.inetum.RecruitmentProcess.ImplServices.ExperienceServiceImpl;
-import tn.inetum.RecruitmentProcess.domain.Contrat;
+
 import tn.inetum.RecruitmentProcess.domain.Experience;
 
 @RestController
